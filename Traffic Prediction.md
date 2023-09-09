@@ -53,7 +53,7 @@ $$
 
 定义长度为T差分序列$X^{'}_t = [x^{'}_{t-T+1},……,x^{'}_{t-1}]$ ，其中$x^{'}_{t-j} = x_{t-j} - x_{t-j-1}$
 
-定义符号$B$有$Bx_t = \doteq x_{t-1}$，可推$x$的k阶差分：
+定义符号$B$有$Bx_t \doteq x_{t-1}$，可推$x$的k阶差分：
 
 $$
     \begin{equation}
@@ -69,7 +69,7 @@ $$
     \end{equation}
 $$
 
-令$\triangledown = 1 - B$ 则**ARIMA(p,dpq)**模型表示为:
+令$\triangledown = 1 - B$ 则 **ARIMA(p,d,p,q)** 模型表示为:
 
 $$
     \phi^{[p]}(B) \triangledown^{d} x_t = \theta^{[q]}(B)\varepsilon_t
