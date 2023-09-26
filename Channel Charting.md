@@ -152,3 +152,11 @@ $$
 
 ![](image/20230926093845.png)
 
+## Indoor Localization with Robust Global Channel Charting: A Time-Distance-Based Approach
+
+提出了一种基于全局通道绘图的室内定位方法，该方法使用时间同步的单输入/单输出信道状态信息（CSI），并提出了一种新的距离度量方法，使得该方法能够学习环境的全局几何结构而无需注释。同时，该方法工作建立在Isomap的思想之上,使用Siamese神经网络来优化全局通道图，并使用线性变换将其映射到实际世界坐标系，从而实现了全局通道图辅助指纹定位和定位预测。
+
+
+
+
+
