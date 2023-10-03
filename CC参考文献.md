@@ -1,3 +1,5 @@
+![](image/Channel_Charting.png)
+
 [1] Studer, Christoph, et al. “Channel Charting: Locating Users within the Radio Environment Using Channel State Information.” arXiv: Information Theory,arXiv: Information Theory, July 2018.
 
 [2] Deng, Junquan, et al. “Multipoint Channel Charting for Wireless Networks.” 2018 52nd Asilomar Conference on Signals, Systems, and Computers, 2018.
