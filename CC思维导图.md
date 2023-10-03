@@ -14,14 +14,28 @@
 ### 降维
 
 - principal component analysis(PCA)[1]
-- Sammon's mapping(SM)[2]
-- autoencoder[3]
-- Triplet-Based
+- Sammon's mapping(SM)[1]
+- autoencoder[1][6][18]
+- Triplet-Based[8]-[10]
 
 ## 后续应用
 
-- 波束成形
-- 用户定位
-- 导频分配
-- UE分组
-- 无线电资源管理
+- 波束成形[11]-[13]
+- 用户定位[5][16][17]
+- 导频分配[14]
+- UE分组[15]
+
+## 后续发展方向
+
+### Channel  Charting本身技术的改进
+- 环境变化改变CSI，CC的生命周期问题
+- 适应不同场景的相异性度量
+- 生成CC的CSI选择问题
+
+### 与后续应用的结合
+
+- 多天线多用户的beamforming
+- 定位中寻找从通道图到空间坐标的理想转换实现绝对定位
+- 提取CC获得信道统计信息，作为后续的先验
+- 获得LOS和主要径方向上的信息
+- 根据CC做UE轨迹的预测和信道的预测
