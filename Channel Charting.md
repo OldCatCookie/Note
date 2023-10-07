@@ -12,7 +12,7 @@
 
 ---
 
-## Channel Charting: Locating Users within the Radio Environment using Channel State Information
+## 一、Channel Charting: Locating Users within the Radio Environment using Channel State Information
 
 我们提出了一种新的框架，我们称之为信道图，该框架将从小区中的UE获取的CSI映射到低维映射中，该低维映射捕捉真实UE在空间中位置的局部几何结构。信道制图是无监督的，即不需要来自真实UE位置的任何信息，例如，从全球导航卫星系统（GNSS）获得的信息。
 
@@ -76,7 +76,7 @@ $$
 
 ---
 
-## Channel charting based beamforming
+## 二、Channel charting based beamforming
 
 在本文中，将通道绘制作为基于位置的波束形成的输入。这允许基站根据图表位置而不是空间位置选择合适的预编码器。这减轻了对用户位置进行精确估计的需求，并为空间和频率[20]中的通道映射等几个应用程序开辟了道路。
 
@@ -88,7 +88,7 @@ $$
 
 ---
 
-## Estimation of User Coordinates via Channel Charting and MUSIC
+## 三、Estimation of User Coordinates via Channel Charting and MUSIC
 
 本文主要介绍了一种新的无线通信用户坐标估计方法，通过使用逆根平方通道系数（ISQ）算法，线性回归（LR）算法和MUSIC算法来估计到达角θ和基站与用户设备之间的距离ρ，以此生成极坐标下的信道图。该方法与PCA、Samson’s方法（SM）和自编码器（AE）等其他信道绘图算法进行了比较，发现ISQ、LR和MUSIC的性能优于前三种算法。本文还介绍了一些相关的概念，如信道模型、到达角和信道图的连续性和可信度等。
 
@@ -112,7 +112,7 @@ $$
 
 ---
 
-## Triplet-Based Wireless Channel Charting: Architecture and Experiments
+## 四、Triplet-Based Wireless Channel Charting: Architecture and Experiments
 
 这篇文章的主要贡献在于描述了一种基于三元组的通道图绘制方法，该方法可用于随时间连续收集的训练数据集。我们使用这些时间信息来教导网络区分近的CSI点和远的点，并使用学习到的距离来产生低维潜在空间中的点的表示。解决了在信道数据降维过程中距离度量不可靠的问题。
 
@@ -133,7 +133,7 @@ $$
 
 ---
 
-## Improving Triplet-Based Channel Charting on Distributed Massive MIMO Measurements
+## 五、Improving Triplet-Based Channel Charting on Distributed Massive MIMO Measurements
 
 本文主要介绍了基于三元组的通道绘图方法，该方法通过从大量的信道状态信息（CSI）中学习一个从高维空间到低维空间（也称为通道图）的映射，从而学习无需真实位置标签即可实现的自我监督训练方法。
 
@@ -152,7 +152,7 @@ Triplet Seletion：为了生成一组（案例中为120万）三元组来训练D
 
 ---
 
-## Efficient channel charting via phase-insensitive distance computation
+## 六、Efficient channel charting via phase-insensitive distance computation
 
 本文提出了一种计算高效的信道绘制方法，该方法基于距离测量的计算，该距离测量被设计为对小规模衰落不敏感，并局部反映物理距离。这一措施在理论上是基于一个简单的物理信道模型。它允许从训练通道计算距离矩阵，然后在Isomap非线性降维方法中使用该矩阵来获得图表坐标。
 
@@ -170,7 +170,7 @@ $$
 
 ---
 
-## Indoor Localization with Robust Global Channel Charting: A Time-Distance-Based Approach
+## 七、Indoor Localization with Robust Global Channel Charting: A Time-Distance-Based Approach
 
 提出了一种基于全局通道绘图的室内定位方法，该方法使用时间同步的单输入/单输出信道状态信息（CSI），并提出了一种新的距离度量方法，使得该方法能够学习环境的全局几何结构而无需注释。同时，该方法工作建立在Isomap的思想之上,使用Siamese神经网络来优化全局通道图，并使用线性变换将其映射到实际世界坐标系，从而实现了全局通道图辅助指纹定位和定位预测。
 
@@ -229,7 +229,7 @@ $$
 
 ---
 
-## Angle-Delay Profile-Based and Timestamp-Aided Dissimilarity Metrics for Channel Charting
+## 八、Angle-Delay Profile-Based and Timestamp-Aided Dissimilarity Metrics for Channel Charting
 
 提出了一种考虑角度域信息的新的相异性度量以及一种新的基于深度学习的度量。此外，我们提出了一种融合相异性度量的方法，以便在学习通道图时可以考虑测量通道的时间以及通道状态信息的相似性。
 
@@ -251,7 +251,7 @@ $$
 
 ---
 
-## Channel Charting for Pilot Reuse in mMTC with Spatially Correlated MIMO Channels
+## 九、Channel Charting for Pilot Reuse in mMTC with Spatially Correlated MIMO Channels
 
 本文主要介绍了在大规模MIMO系统和空间相关信道下的mMTC中，基于信道图表技术的重复利用导频策略。为了解决导频污染问题，本文利用信道协方差矩阵提取角度域信息，并为具有重叠到达角区间的用户分配正交导频序列。
 
@@ -296,9 +296,70 @@ $$
 
 文章中有这样的假设：“假设CC完美地捕获了ue之间的角距离，并且我们在分配第一个导频序列时做出了“好的”选择(选择角域极值的ue之一)” 说明初始化对算法有影响，且贪婪算法成本高，能否设计一个端到端网络进行CC训练以及导频分配？
 
+---
+
+## 十、Location-Free Beam Prediction in mmWave Systems
+
+提出了一种基于通道图谱的框架，通过利用用户当前所在小区的通道图谱来预测下一个传输时刻移动用户的最佳基站波束。使用QuaDRiGa信道生成器模拟了通道，并使用通道图谱进行预测。
+
+### 建模
+
+当UE在波束$v_n$上发送时，在BS处使用波束$w_m$的子载波中从UE u接收的信号是:
+
+$$
+    y^{u,s}_{m,n} = w^H_m H_{u,s}v_n x_s + n_u = h^{u,s}_{m,n} x + n_u
+$$
+
+其中$h^{u,s}_n = W_HH_{u,s}v_n$是BS波束m和UE波束n的有效信道系数。而从使用波束$v_n$的UE传输的BS处的所有波束测量的有效信道矢量为：$h^{u,s}_{m,n} = W^H H_{u,s}v_n$。
+
+对于每个BS波束，存在最佳UE波束，它由下式决定：
+
+$$
+    \hat{n} = \hat{n}(m) = \underset{n}{argmax}\ \ \mathbb{E}{| h^{u,s}_{m,n} |^2}
+$$
+
+BS不知道UE使用哪个波束，只知道它应该向哪个BS波束发送和从哪个BS波束接收。BS波束和UE基带接收机之间的信道矢量因此以UE关于BS使用哪个波束的假设为条件。如果UE假设BS使用波束m，则该信道矢量变为:
+
+$$
+    h^{u,s}_{\hat{n}(m)} = W_H H_{u,s}v_{\hat{n}(m)}
+$$
+
+### 建立CC进行波束预测
+
+处理UE u的CSI协方差矩阵$R_u$以获得信道特征$f_u$，然后对BS所观测到的K个UEs建立相异度矩阵$D \in \mathbb{R}^{K \times K}_{+}$，其中的相异度d
+由下式计算：
+
+$$
+    d_{CMD}(R_u,R_{u^{'}}) = 1 - \displaystyle \frac{Tr(R_u R_{u^{'}})}{||R_u||_F \ \ ||R_{u^{'}}||_F}
+$$
+
+本文使用了Isomaps和t-SNE进行降维得到了包含每个UE对应坐标的二维图表。BS根据接收到的信道向量$h^{u,s}_{\hat{n}(m)}$为每个BS波束构造单独的CC，其中不同位置处的UE以朝向$w_m$的最佳波束$v_n(m)$进行发射，而固定了UE波束$v_n$后，最佳BS波束由下式确定，并且用关于每个样本点的最佳BS波束的信息对所有CC进行注释，这使得能够进行最佳BS波束预测。
+
+$$
+    \hat{m} = \underset{m}{argmax}\mathbb{E}\{|h^{u,s}_{m,n(m)}|^2\}
+$$
+
+则UE uc朝向BS波束m的协方差矩阵为
+
+$$
+    R_{u,m} = \mathbb{E}\{h^{u,s}_{\hat{n(m)}}(h^{u,s}_{\hat{n(m)}})^H\}
+$$
+
+得到CC之后，预测阶段BS测量UE的CSI特征，并使用针对波束m的CC上的新UE位置的样本外扩展来获得CC坐标。通过计算新数据点的协方差与现有CC点的协方差的相异性并且将新数据点中的CC位置近似为与新UE具有最小相异性的图表UE的CC位置。根据采样点上的最佳波束的注释，BS可以推导出UE位置的最佳BS波束索引$\hat{m}$。
 
 
+### 预测UE移动性
 
+本文使用过去的两个CC位置$z_{t-1}$和$z_t$对未来第$(t+1)^{th}$时刻的CC位置$\hat{z}_{t+1}$做了简单线性预测。
+
+### 改进方向
+
+与基于物理位置的预测相比，本文所提出的基于CC的预测存在性能损失。这是依赖现有无线电接入网内部CSI进行定位而不是使用GPS信息的成本。
+
+改进方向可能有：
+
+- 改进CC的生成，例如使用现有更好的相异度度量ADP等，能够让CC更为贴近真实物理空间中的布局。
+- 改进预测手段，例如使用基于神经网络的预测。
 
 
 

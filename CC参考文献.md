@@ -22,7 +22,7 @@
 
 [11] Kazemi, Parham, et al. “Channel Charting Based Beam SNR Prediction.” 2021 Joint European Conference on Networks and Communications &amp; 6G Summit (EuCNC/6G Summit), 2021.
 
-[12] Kazemi, Parham, et al. “Channel Charting Based Beam SNR Prediction.” 2021 Joint European Conference on Networks and Communications &amp; 6G Summit (EuCNC/6G Summit), 2021.
+[12] Ponnada, Tushara, et al. “Location-Free Beam Prediction in mmWave Systems.” 2021 IEEE 93rd Vehicular Technology Conference (VTC2021-Spring), 2021.
 
 [13] b-com, LucLeMagoarou(IRT, et al. Channel Charting Based Beamforming. Dec. 2022.
 
