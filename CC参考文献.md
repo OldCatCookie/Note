@@ -34,4 +34,6 @@
 
 [17] Karmanov, Ilia, et al. “WiCluster: Passive Indoor 2D/3D Positioning Using WiFi without Precise Labels.” Cornell University - arXiv,Cornell University - arXiv, May 2021.
 
+[18] Estimation of User Coordinates via Channel Charting and MUSIC
+
 [18] Agostini, Patrick, et al. “Not-Too-Deep Channel Charting (N2D-CC).” 2022 IEEE Wireless Communications and Networking Conference (WCNC), 2022.
