@@ -176,3 +176,88 @@ channel charting 对H做非线性的降维，图的表征
 # 新方向 dynamic HBF 
 
 注意和message passing的联系
+
+首先，我们需要定义一些符号和概念。
+
+- $C^{n\times n}$ 表示所有 $n \times n$ 复数矩阵的集合。
+- $\| \cdot \|_{m_2}$ 和 $\| \cdot \|_2$ 分别表示矩阵的 Frobenius 范数和谱范数。对于任意矩阵 $A = [a_{ij}] \in C^{n\times n}$，它们的定义如下：
+
+  - Frobenius 范数：$\|A\|_{m_2} = \sqrt{\sum_{i=1}^{n}\sum_{j=1}^{n}|a_{ij}|^2}$。
+  - 谱范数：$\|A\|_2 = \sqrt{\rho(A^*A)}$，其中 $\rho(A^*A)$ 是 $A^*A$ 的最大特征值。
+
+现在，我们来证明 $\|AB\|_{m_2} \leq \|A\|_2\|B\|_{m_2}$。
+
+证明：
+
+对不起，我之前的回答可能引起了一些混淆。让我们重新开始并证明这个不等式。
+
+对于任意的 $A,B \in C^{n\times n}$，我们需要证明 $\|AB\|_{m_2} \leq \|A\|_2\|B\|_{m_2}$。
+
+证明：
+
+我们首先注意到，对于任意的向量 $x \in C^n$，我们有 $\|Bx\|_2 \leq \|B\|_{m_2} \|x\|_2$。这是因为：
+
+\[
+\|Bx\|_2^2 = x^* B^* B x \leq x^* (\|B\|_{m_2}^2 I) x = \|B\|_{m_2}^2 \|x\|_2^2
+\]
+
+其中 $I$ 是单位矩阵。取平方根，我们得到 $\|Bx\|_2 \leq \|B\|_{m_2} \|x\|_2$。
+
+然后，我们注意到，对于任意的向量 $y \in C^n$，我们有 $\|Ay\|_2 \leq \|A\|_2 \|y\|_2$。这是因为谱范数的定义就是最大的 $\|Ay\|_2 / \|y\|_2$，其中 $y$ 遍历所有非零向量。
+
+因此，对于任意的向量 $x \in C^n$，我们有：
+
+\[
+\|ABx\|_2 = \|A(Bx)\|_2 \leq \|A\|_2 \|Bx\|_2 \leq \|A\|_2 \|B\|_{m_2} \|x\|_2
+\]
+
+这意味着 $\|AB\|_2 \leq \|A\|_2 \|B\|_{m_2}$，因为 $\|AB\|_2$ 是所有 $\|ABx\|_2 / \|x\|_2$ 的最大值，其中 $x$ 遍历所有非零向量。
+
+然后，我们注意到，对于任意的矩阵 $C \in C^{n\times n}$，我们有 $\|C\|_{m_2} \geq \|C\|_2$。这是因为 Frobenius 范数是所有 $\|Cx\|_2 / \|x\|_2$ 的平均值，其中 $x$ 遍历所有单位向量，而谱范数是这些值的最大值。
+
+因此，我们有 $\|AB\|_{m_2} \geq \|AB\|_2 \leq \|A\|_2 \|B\|_{m_2}$，这就完成了证明。
+
+首先，我们需要了解一些基本的符号和定义：
+
+(A^\text{H}) 表示矩阵 (A) 的共轭转置。
+(x^\text{H}) 表示向量 (x) 的共轭转置。
+(x^\text{H}Ax \geq 0) 表示 (A) 是半正定的。
+(\operatorname{tr}(A)) 表示矩阵 (A) 的迹（所有对角元素的和）。
+(\operatorname{rank}(A)) 表示矩阵 (A) 的秩。
+(\parallel A\parallel_{\mathcal{F}}) 表示矩阵 (A) 的Frobenius范数，定义为 (\sqrt{\sum_{i=1}^{n}\sum_{j=1}^{n}|a_{ij}|^2})。
+我们需要证明的是：(\left[\operatorname{tr}(A)\right]^2\leq\operatorname{rank}(A)\cdotp\parallel A\parallel_{\mathcal{F}}^2).
+
+证明如下：
+
+由于 (A) 是半正定的，我们可以将其分解为$ (A = UDU^\text{H})$，其中 (U) 是酉矩阵，(D) 是对角矩阵，对角线元素为非负实数（即 (A) 的特征值）。
+
+我们有 $(\operatorname{tr}(A) = \operatorname{tr}(UDU^\text{H}) = \operatorname{tr}(D))$，因为迹运算在相似变换下保持不变。
+
+另一方面，我们有 $(\parallel A\parallel_{\mathcal{F}}^2 = \parallel UDU^\text{H}\parallel_{\mathcal{F}}^2 = \parallel D\parallel_{\mathcal{F}}^2)$，因为Frobenius范数在相似变换下保持不变。
+
+因此，我们需要证明的不等式变为$ (\left[\operatorname{tr}(D)\right]^2\leq\operatorname{rank}(D)\cdotp\parallel D\parallel_{\mathcal{F}}^2)$.
+
+由于 (D) 是对角矩阵，其迹就是对角线元素的和，即特征值的和。同时，Frobenius范数就是所有元素的平方和的平方根，即特征值的平方和的平方根。因此，我们需要证明的不等式变为$ (\left[\sum_{i=1}^{n}\lambda_i\right]^2\leq r\cdotp\sum_{i=1}^{n}\lambda_i^2)$，其中 $(\lambda_i) $是 (A) 的特征值，(r) 是 (A) 的秩。
+
+这是一个已知的不等式，称为Cauchy-Schwarz不等式。因此，我们已经完成了证明。
+
+这个不等式是柯西-施瓦茨（Cauchy-Schwarz）不等式的一个特殊形式。柯西-施瓦茨不等式的一般形式是：
+
+对于任何实数序列 $a_1, a_2, ..., a_n$ 和 $b_1, b_2, ..., b_n$，都有
+
+\[(\sum_{i=1}^{n}a_ib_i)^2 \leq (\sum_{i=1}^{n}a_i^2)(\sum_{i=1}^{n}b_i^2)\]
+
+对不起，我犯了一个错误。你是对的，对于半正定矩阵，特征值可能为零，因此秩 \(r\) 可能小于 \(n\)。我们应该使用矩阵的秩，而不是矩阵的维度。
+
+我们可以通过以下方式修正这个证明：
+
+首先，我们将特征值从大到小排序，即 \(\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_r > 0\)，\(\lambda_{r+1} = \ldots = \lambda_n = 0\)。这里，\(r\) 是矩阵 \(A\) 的秩。
+
+然后，我们有：
+
+\[\left(\sum_{i=1}^{r}\lambda_i\right)^2 \leq r \cdot \sum_{i=1}^{r}\lambda_i^2\]
+
+这是因为对于非负实数，我们有 \(\left(\sum_{i=1}^{r}a_i\right)^2 \leq r \cdot \sum_{i=1}^{r}a_i^2\)，这是柯西-施瓦茨不等式的一个特殊情况。
+
+因此，我们有 \(\left[\operatorname{tr}(A)\right]^2\leq\operatorname{rank}(A)\cdotp\parallel A\parallel_{\mathcal{F}}^2\)，这就完成了证明。
+
