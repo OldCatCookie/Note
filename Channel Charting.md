@@ -386,12 +386,6 @@ $$
 
 ---
 
-### 十二、Multipoint Channel Charting for Wireless Networks
-
-该方法利用了多个分布式BS从时空样本中被动收集的大量高维信道状态信息（CSI）。在每个BS处，高分辨率多径信道参数估计算法提取隐藏在所获取的CSI中的特征。然后，每个BS基于为其收集的样本提取的特征构建局部相异性矩阵，并将其提供给执行特征融合和流形学习的集中式实体，以构建多小区信道图。目的是以这样一种方式绘制蜂窝系统的无线电几何图形，即两个用户之间的空间距离非常接近他们的CSI特征距离。
-
----
-
 10月9日讨论：
 
 1. "Channel Charting Based Beam SNR Prediction"论文中波束预测和SNR预测虽然说是多用户，但实际上因为它仿真用的QuadriGa信道模型有空间连续性和时间演化性，所以本质上还是一个单用户的工作，实际上多用户撒点时，散射体完全是独立随机产生的，同一位置，同一时刻不同用户测得的CSI也有可能不一样。
@@ -402,3 +396,42 @@ $$
 **接下来的工作方向**
 
 先改进波束管理：(从改进信道图生成质量和预测手段改进上)，熟悉流程，后续再变换场景，扩展到移动场景的CSI预测上。
+
+---
+
+## 十二、Multipoint Channel Charting for Wireless Networks
+
+### 摘要
+
+多点信道图是一种机器学习框架，其中多个大规模MIMO（mMIMO）基站（BS）协作学习表征网络环境和用户空间位置的多小区无线电地图。该方法利用了多个分布式BS从时空样本中被动收集的大量高维信道状态信息（CSI）。在每个BS处，高分辨率多径信道参数估计算法提取隐藏在所获取的CSI中的特征。然后，每个BS基于为其收集的样本提取的特征构建局部相异性矩阵，并将其提供给执行特征融合和流形学习的集中式实体，以构建多小区信道图。目的是以这样一种方式绘制蜂窝系统的无线电几何图形，即两个用户之间的空间距离非常接近他们的CSI特征距离。我们证明了（i）多点信道制图能够解开曼哈顿系统的拓扑结构，以及（ii）几乎完美地捕捉到来自不同空间位置的CSI特征之间的邻居关系。
+
+### 多点CC模型
+
+![](image/20231129173608.png)
+
+由于不同基站观测到不同采样点的子集，对相异性可能有不同的解释，所以文章提出了形成一个全局的相异性矩阵D，“构建一个全局可靠的多小区信道图，我们必须融合不同基站产生的数据。在这方面，然后基于{Db}B通过考虑可靠性因素的逻辑集中式单元（CU）从b个BS中获得b＝1。最后，使用基于相异矩阵的流形学习生成多小区通道图。”
+
+### feature 的选择
+
+文章选择了DOA和功率作为feature，例如两个CSI feature：$\begin{aligned}\mathbf{f}_n^b=[\lambda_1,\ldots,\lambda_{L_1},\phi_1,\ldots,\phi_{L_1}]\end{aligned}$ 和 $\mathbf{f}_n^b = [\mu_1,\ldots,\mu_{L_2},\theta_1,\ldots,\theta_{L_2}]$
+
+将路径DoA和功率对转换为笛卡尔坐标系中的点
+
+$$\mathcal{F}(\mathbf{f}_n^b)=[\mathbf{x}_1,\ldots,\mathbf{x}_{L_1}],~\mathcal{F}(\mathbf{f}_m^b)=[\mathbf{y}_1,\ldots,\mathbf{y}_{L_2}]$$
+
+其中$\mathbf{x}_i=[\frac{\cos\phi_i}{\sqrt{\lambda_i}},\frac{\sin\phi_i}{\sqrt{\lambda_i}}]^\mathrm{T},\mathbf{y}_j=[\frac{\cos\theta_j}{\sqrt{\mu_j}},\frac{\sin\theta_j}{\sqrt{\mu_j}}]^\mathrm{T}$
+
+为了在无监督环境中产生不同的度量，值得注意的是，附近的UE位置会产生相似的笛卡尔点，因为它们共享相同的散射点，并且具有相似的多路径组件。文章使用DBSCAN的方法对这些点进行了一个分类，假设所有N个采样UE位置的多径分量被聚类为C个聚类，那么两个样本m，n之间的距离定义为：
+
+$$d_f(\mathbf{f}_n^b,\mathbf{f}_m^b)=\begin{cases}\|\mathbf{x}_i-\mathbf{y}_j\|_2,&\text{if n,m share the same clusters},\\\|\mathbf{x}_1-\mathbf{y}_1\|_2,&\text{otherwise},\end{cases}$$
+
+其中$[i,j]~=~\arg\max_{i,j}\{\min(\lambda_i,\mu_j)\}$ 且$l(x_i)=l(y_j)$。背后的核心思想是，如果两个样本在同一集群中共享路径，则应该根据这些相似的路径来估计它们的距离。形成相异性矩阵D，$D_{n,m}^b=d_f(\mathbf{f}_n^b,\mathbf{f}_m^b)$
+
+### 基于数据融合的全局差异矩阵
+
+使用以下网络级别的加权相异性对来自多个基站的相异性矩阵融合：
+
+$$D_{n,m}=\left(\sum_{b=1}^Bw_b\right)^{-1}\sum_{b=1}^Bw_bD_{n,m}^b,$$
+
+![](image/20231129202825.png)
+
