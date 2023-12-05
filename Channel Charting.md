@@ -425,6 +425,8 @@ $$\mathcal{F}(\mathbf{f}_n^b)=[\mathbf{x}_1,\ldots,\mathbf{x}_{L_1}],~\mathcal{F
 
 $$d_f(\mathbf{f}_n^b,\mathbf{f}_m^b)=\begin{cases}\|\mathbf{x}_i-\mathbf{y}_j\|_2,&\text{if n,m share the same clusters},\\\|\mathbf{x}_1-\mathbf{y}_1\|_2,&\text{otherwise},\end{cases}$$
 
+> 这个不同多径分量的聚类可不可以用稀疏patten的共享稀疏性分类来代替？
+
 其中$[i,j]~=~\arg\max_{i,j}\{\min(\lambda_i,\mu_j)\}$ 且$l(x_i)=l(y_j)$。背后的核心思想是，如果两个样本在同一集群中共享路径，则应该根据这些相似的路径来估计它们的距离。形成相异性矩阵D，$D_{n,m}^b=d_f(\mathbf{f}_n^b,\mathbf{f}_m^b)$
 
 ### 基于数据融合的全局差异矩阵
